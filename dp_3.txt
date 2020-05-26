@@ -1,0 +1,75 @@
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace std;
+using namespace __gnu_pbds;
+#define MOD 1000000007
+#define ll long long int
+#define pi pair <ll,ll>
+#define vi vector <ll>
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+#define rep(i,a,b) for (int i = a; i < b; i++)
+#define SQ(a) (a)*(a)
+#define ordered_set tree<ll, null_type,greater_equal<ll>, rb_tree_tag,tree_order_statistics_node_update>       //greater_equal<ll> or less<ll>
+// find_by_key()   order_of_key()
+//#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+/*bool comp(string a, string b) {
+if (a.size() != b.size()) return a.size() < b.size();
+return a < b;
+}*/
+
+
+ 
+int main() 
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    /*freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);*/
+    ll i,j,m,t,l=0,x,prev=0,max1=0,flag=0,cnt=0,y,min1,q,sum=0,r,n,k,p,flag2=0,ind=0,b;
+    cin>>n;
+    ll a[n][3];
+    ll dp[n][3];
+    for(i=0;i<n;i++){
+        for(j=0;j<3;j++){
+            cin>>a[i][j];
+            dp[i][j]=INT_MIN;
+            if(i==0){
+                dp[i][j]=a[i][j];
+            }
+        }
+    }
+    for(i=0;i<n-1;i++){
+        for(j=0;j<3;j++){
+            if(j==0){
+                dp[i+1][1]=max(dp[i+1][1],dp[i][0]+a[i+1][1]);
+                dp[i+1][2]=max(dp[i+1][2],dp[i][0]+a[i+1][2]);
+            }
+            if(j==1){
+                dp[i+1][0]=max(dp[i+1][0],dp[i][1]+a[i+1][0]);
+                dp[i+1][2]=max(dp[i+1][2],dp[i][1]+a[i+1][2]);
+            }
+            if(j==2){
+                dp[i+1][0]=max(dp[i+1][0],dp[i][2]+a[i+1][0]);
+                dp[i+1][1]=max(dp[i+1][1],dp[i][2]+a[i+1][1]);
+            }
+        }
+    }
+    i=n-1;
+    max1=0;
+    for(j=0;j<3;j++){
+        if(dp[i][j]>=max1){
+            max1=dp[i][j];
+        }
+    }
+    cout<<max1;
+    
+  
+    
+    
+ 
+    return 0;
+}
